@@ -1,0 +1,14 @@
+{
+  "extends": ["prettier", "@adonisjs/eslint-config", "@adonisjs/prettier-config"],
+  "rules": {
+    "prettier/prettier": "error",
+    "import/order": {
+      "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"]],
+      "newlines-between": "always",
+      "alphabetize": {
+        "order": "asc",
+        "caseInsensitive": true
+      }
+    }
+  }
+}
