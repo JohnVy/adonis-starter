@@ -26,7 +26,7 @@ router
     // View
     router.get('/login', [LoginController, 'render']).as('login')
     router.get('/logout', [LogoutController, 'logout']).as('logout')
-    router.get('/google/redirect', ({ ally }) => ally.use('google').redirect())
+    // router.get('/google/redirect', ({ ally }) => ally.use('google').redirect())
 
     // Action
     router.post('/login', [LoginController, 'login'])
