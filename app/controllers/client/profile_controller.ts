@@ -17,7 +17,7 @@ export default class ProfileController {
     return inertia.render('profile/index', { user })
   }
 
-  async updateProfile({ auth, request, response }: HttpContext) {
+  async update({ auth, request, response }: HttpContext) {
     const user = auth.use('web').user!
     const { firstName, lastName, avatar, phoneNumber } = await request.validateUsing(
       ProfileController.profileValidator
