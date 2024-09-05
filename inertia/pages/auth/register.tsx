@@ -1,6 +1,5 @@
-import { Link, useForm } from '@inertiajs/react'
+import { Link } from '@inertiajs/react'
 
-import { FormEvent, useState } from 'react'
 import { UserAuthForm } from '~/components/common/form/user_auth_form'
 import { buttonVariants } from '~/components/ui/button'
 
@@ -8,41 +7,9 @@ import Layout from '~/layouts/layout'
 import { cn } from '~/lib/utils'
 
 export default function RegisterPage() {
-  const [showPassword, setShowPassword] = useState(false)
-  const { data, errors, processing, post, setData } = useForm({
-    email: '',
-    password: '',
-  })
-
-  const submit = (event: FormEvent) => {
-    event.preventDefault()
-
-    if (processing) {
-      return
-    }
-
-    post('/login')
-  }
-
   return (
     <Layout>
       <div className="w-full min-h-screen">
-        <div className="md:hidden">
-          <img
-            src="/examples/authentication-light.png"
-            width={1280}
-            height={843}
-            alt="Authentication"
-            className="block dark:hidden"
-          />
-          <img
-            src="/examples/authentication-dark.png"
-            width={1280}
-            height={843}
-            alt="Authentication"
-            className="hidden dark:block"
-          />
-        </div>
         <div className="container relative hidden min-h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
           <Link
             href="/login"
