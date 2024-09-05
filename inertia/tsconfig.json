@@ -4,12 +4,15 @@
     "baseUrl": ".",
     "module": "ESNext",
     "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "paths": {
       "~/*": ["./*"],
       "~/components/*": ["./components/*"],
       "~/layouts/*": ["./layouts/*"],
       "~/pages/*": ["./pages/*"],
-      "~/style/*": ["./styles/*"]
+      "~/assets/*": ["./assets/*"]
     }
   },
   "include": ["./**/*.ts", "./**/*.tsx"]

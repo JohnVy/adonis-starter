@@ -11,7 +11,7 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 
 // Global routes
-router.on('/').renderInertia('home', { version: 6 })
+router.on('/').renderInertia('home')
 router.on('/about').renderInertia('about')
 router.on('/shop').renderInertia('shop')
 router.on('/terms').renderInertia('terms')
@@ -24,7 +24,8 @@ const RegisterController = () => import('#controllers/auth/register_controller')
 router
   .group(() => {
     // View
-    router.get('/login', [LoginController, 'render']).as('login')
+    router.get('login', [LoginController, 'render']).as('login')
+    router.get('/register', [RegisterController, 'render']).as('register')
     router.get('/logout', [LogoutController, 'logout']).as('logout')
     // router.get('/google/redirect', ({ ally }) => ally.use('google').redirect())
 

@@ -5,19 +5,23 @@ import vine from '@vinejs/vine'
 export default class RegisterController {
   static registerValidator = vine.compile(
     vine.object({
-      nickName: vine.string().minLength(1),
+      userName: vine.string().minLength(1),
       email: vine.string().email(),
       password: vine.string().minLength(6),
     })
   )
 
+  render({ inertia }: HttpContext) {
+    return inertia.render('auth/register')
+  }
+
   async register({ auth, request, response }: HttpContext) {
-    const { nickName, email, password } = await request.validateUsing(
+    const { userName, email, password } = await request.validateUsing(
       RegisterController.registerValidator
     )
 
     const user = await User.create({
-      nickName,
+      userName,
       email,
       password,
     })

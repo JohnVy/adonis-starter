@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr" class="h-full bg-white">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title inertia>AdonisJS x Inertia x React</title>
+  <title inertia>AdonisJS x Inertia x React x Tailwind</title>
 
   @viteReactRefresh()
   @inertiaHead()
   @vite(['inertia/app/app.tsx', `inertia/pages/${page.component}.tsx`])
 </head>
 
-<body>
+<body class="h-full">
   @inertia()
 </body>
 

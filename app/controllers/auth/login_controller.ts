@@ -6,7 +6,7 @@ import vine from '@vinejs/vine'
 export default class LoginController {
   static loginValidator = vine.compile(
     vine.object({
-      email: vine.string().email(),
+      email: vine.string().email().minLength(2),
       password: vine.string().minLength(6),
     })
   )
@@ -26,7 +26,6 @@ export default class LoginController {
     } else if (user.role === UserRole.User) {
       return response.redirect().toRoute('client.dashboard')
     } else {
-      // Utilise `with` pour ajouter un message flash
       return response.redirect().toRoute('/login')
     }
   }
