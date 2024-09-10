@@ -46,3 +46,12 @@ router
     router.post('/profile', [ProfileController, 'update'])
   })
   .use(middleware.auth())
+
+// Admin routes
+const AdminDashboardController = () => import('#controllers/admin/dashboard_controller')
+router
+  .group(() => {
+    // View
+    router.get('/admin/dashboard', [AdminDashboardController, 'render']).as('admin.dashboard')
+  })
+  .use(middleware.auth())

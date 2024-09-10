@@ -5,15 +5,6 @@ import vine from '@vinejs/vine'
 export default class RegisterController {
   static registerValidator = vine.compile(
     vine.object({
-      username: vine
-        .string()
-        .trim()
-        .minLength(4)
-        .maxLength(20)
-        .unique(async (db, value) => {
-          const user = await db.from('users').where('username', value).first()
-          return !user
-        }),
       email: vine
         .string()
         .trim()
@@ -31,18 +22,15 @@ export default class RegisterController {
   }
 
   async register({ auth, request, response }: HttpContext) {
-    const { username, email, password } = await request.validateUsing(
-      RegisterController.registerValidator
-    )
+    const { email, password } = await request.validateUsing(RegisterController.registerValidator)
 
     const user = await User.create({
-      username,
       email,
       password,
     })
 
     await auth.use('web').login(user)
 
-    return response.redirect().toRoute('client.dashboard')
+    return response.redirect().toRoute('/login')
   }
 }

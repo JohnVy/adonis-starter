@@ -7,6 +7,7 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.uuid('id').primary().defaultTo(this.db.rawQuery('gen_random_uuid()').knexQuery)
       table.uuid('user_id').notNullable().references('id').inTable('users').onDelete('CASCADE')
+      table.string('user_name').notNullable().unique()
       table.string('first_name').notNullable()
       table.string('last_name').notNullable()
       table.string('avatar').nullable()

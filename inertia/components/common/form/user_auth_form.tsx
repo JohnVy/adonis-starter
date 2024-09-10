@@ -1,5 +1,6 @@
 import { useForm } from '@inertiajs/react'
-import { FormEvent } from 'react'
+import { EyeIcon, EyeOffIcon } from 'lucide-react'
+import { FormEvent, useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { Icons } from '~/components/ui/icons'
 import { Input } from '~/components/ui/input'
@@ -9,8 +10,10 @@ import { cn } from '~/lib/utils'
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+  const [showPassword, setShowPassword] = useState(false)
   const { data, errors, processing, post, setData } = useForm({
     email: '',
+    password: '',
   })
 
   async function onSubmit(event: FormEvent) {
@@ -23,9 +26,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <form onSubmit={onSubmit}>
         <div className="grid gap-4">
           <div className="grid gap-2">
-            <Label className="sr-only" htmlFor="email">
-              Email
-            </Label>
+            <Label htmlFor="email">Email</Label>
             <Input
               id="email"
               placeholder="name@example.com"
@@ -39,6 +40,41 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
               disabled={processing}
             />
             {errors.email && <small className={'text-red-500'}>{errors.email}</small>}
+          </div>
+          <div className="grid gap-2">
+            <div className="flex items-center">
+              <Label htmlFor="password">Password</Label>
+            </div>
+            <div className="relative">
+              <Button
+                className="absolute right-0 top-1/2 -translate-y-1/2 transform rounded-l-none border-l"
+                type="button"
+                variant="ghost"
+                onClick={(e) => {
+                  e.preventDefault()
+                  setShowPassword(!showPassword)
+                }}
+                disabled={!data.password}
+              >
+                {showPassword ? (
+                  <EyeIcon className="h-4 w-4" aria-hidden="true" />
+                ) : (
+                  <EyeOffIcon className="h-4 w-4" aria-hidden="true" />
+                )}
+                <span className="sr-only">{showPassword ? 'Hide password' : 'Show password'}</span>
+              </Button>
+              <Input
+                id="password"
+                type={showPassword ? 'text' : 'password'}
+                required
+                value={data.password}
+                onChange={(e) => setData('password', e.target.value)}
+              />
+            </div>
+            {errors.password && <small className={'text-red-500'}>{errors.password}</small>}
+            {'code' in errors && errors.code === 'E_INVALID_CREDENTIALS' && (
+              <small className={'text-red-500'}>Email et/ou mot de passe incorrect</small>
+            )}
           </div>
           <Button disabled={processing}>
             {processing && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}

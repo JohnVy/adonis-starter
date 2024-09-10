@@ -5,8 +5,17 @@ import path from 'node:path'
 export default class ProfileController {
   static profileValidator = vine.compile(
     vine.object({
-      firstName: vine.string().minLength(3).maxLength(255).optional(),
-      lastName: vine.string().minLength(3).maxLength(255).optional(),
+      userName: vine
+        .string()
+        .trim()
+        .minLength(4)
+        .maxLength(20)
+        .unique(async (db, value) => {
+          const user = await db.from('users').where('username', value).first()
+          return !user
+        }),
+      firstName: vine.string().trim().minLength(3).maxLength(255).optional(),
+      lastName: vine.string().trim().minLength(3).maxLength(255).optional(),
       avatar: vine.file().optional(),
       phoneNumber: vine.string().minLength(10).maxLength(15).optional(),
     })
@@ -19,11 +28,12 @@ export default class ProfileController {
 
   async update({ auth, request, response }: HttpContext) {
     const user = auth.use('web').user!
-    const { firstName, lastName, avatar, phoneNumber } = await request.validateUsing(
+    const { userName, firstName, lastName, avatar, phoneNumber } = await request.validateUsing(
       ProfileController.profileValidator
     )
 
     // Mise à jour des champs du profil
+    if (userName) user.userName = userName
     if (firstName) user.profile!.firstName = firstName
     if (lastName) user.profile!.lastName = lastName
     if (phoneNumber) user.profile!.phoneNumber = phoneNumber
