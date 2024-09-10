@@ -5,9 +5,24 @@ import vine from '@vinejs/vine'
 export default class RegisterController {
   static registerValidator = vine.compile(
     vine.object({
-      userName: vine.string().minLength(1),
-      email: vine.string().email(),
-      password: vine.string().minLength(6),
+      username: vine
+        .string()
+        .trim()
+        .minLength(4)
+        .maxLength(20)
+        .unique(async (db, value) => {
+          const user = await db.from('users').where('username', value).first()
+          return !user
+        }),
+      email: vine
+        .string()
+        .trim()
+        .email()
+        .unique(async (db, value) => {
+          const user = await db.from('users').where('email', value).first()
+          return !user
+        }),
+      password: vine.string().minLength(8).maxLength(20),
     })
   )
 
@@ -16,12 +31,12 @@ export default class RegisterController {
   }
 
   async register({ auth, request, response }: HttpContext) {
-    const { userName, email, password } = await request.validateUsing(
+    const { username, email, password } = await request.validateUsing(
       RegisterController.registerValidator
     )
 
     const user = await User.create({
-      userName,
+      username,
       email,
       password,
     })
