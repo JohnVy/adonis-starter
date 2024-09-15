@@ -11,8 +11,8 @@ export default class ProfileController {
         .minLength(4)
         .maxLength(20)
         .unique(async (db, value) => {
-          const user = await db.from('users').where('username', value).first()
-          return !user
+          const profile = await db.from('user_profiles').where('user_name', value).first()
+          return !profile
         }),
       firstName: vine.string().trim().minLength(3).maxLength(255).optional(),
       lastName: vine.string().trim().minLength(3).maxLength(255).optional(),
