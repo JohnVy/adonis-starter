@@ -13,7 +13,7 @@ export default class RegisterController {
           const user = await db.from('users').where('email', value).first()
           return !user
         }),
-      password: vine.string().minLength(8).maxLength(20),
+      password: vine.string().trim().minLength(8).maxLength(20),
     })
   )
 

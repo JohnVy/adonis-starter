@@ -33,7 +33,7 @@ export default class ProfileController {
     )
 
     // Mise à jour des champs du profil
-    if (userName) user.userName = userName
+    if (userName) user.profile!.userName = userName
     if (firstName) user.profile!.firstName = firstName
     if (lastName) user.profile!.lastName = lastName
     if (phoneNumber) user.profile!.phoneNumber = phoneNumber

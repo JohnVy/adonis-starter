@@ -1,6 +1,6 @@
 import { UserRole } from '#enums/user_role'
 import User from '#models/user'
-import { BaseCommand } from '@adonisjs/core/ace'
+import { BaseCommand, args } from '@adonisjs/core/ace'
 import type { CommandOptions } from '@adonisjs/core/types/ace'
 
 export default class CreateUser extends BaseCommand {
@@ -8,20 +8,29 @@ export default class CreateUser extends BaseCommand {
   static description = 'Create a new user'
 
   static options: CommandOptions = {
-    // Define expected arguments
-    args: [],
+    startApp: true,
   }
 
-  async run() {
-    const email = await this.prompt.ask('Enter the email of the user')
-    const password = await this.prompt.secure('Enter the password of the user')
+  @args.string()
+  declare email: string
 
+  async run() {
+    this.logger.info(`Creating user ${this.email}`)
+
+    // Request password
+    const password = await this.prompt.ask('Enter the password')
+
+    // Request role
     const isAdmin = await this.prompt.confirm('Is this user an admin?')
+
     const role = isAdmin ? UserRole.Admin : UserRole.User
 
-    // Create a new user
-    await User.create({ email, password, role })
+    await User.create({
+      email: this.email.toLowerCase().trim(),
+      password: password,
+      role: role,
+    })
 
-    this.logger.success(`User created with email: ${email}`)
+    this.logger.success(`User ${this.email} created`)
   }
 }

@@ -1,15 +1,5 @@
 import { Link, usePage } from '@inertiajs/react'
-import {
-  Home,
-  Package,
-  Settings,
-  ShoppingCart,
-  Users2,
-  TicketPercent,
-  Handshake,
-  Shirt,
-  Truck,
-} from 'lucide-react'
+import { Home, Package, Settings, ShoppingCart, Users2 } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip'
 import { cn } from '~/lib/utils'
 
@@ -21,7 +11,7 @@ export default function SidebarAdmin() {
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
-              href="/admin"
+              href="/admin/dashboard"
               className={cn(
                 'group flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8',
                 url === '/admin' ? 'text-foreground' : ''
