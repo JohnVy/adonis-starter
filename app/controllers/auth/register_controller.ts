@@ -1,4 +1,5 @@
 import User from '#models/user'
+import UserProfile from '#models/user_profile'
 import type { HttpContext } from '@adonisjs/core/http'
 import vine from '@vinejs/vine'
 
@@ -28,6 +29,8 @@ export default class RegisterController {
       email,
       password,
     })
+
+    await UserProfile.create({ userId: user.id })
 
     await auth.use('web').login(user)
 

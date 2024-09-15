@@ -16,7 +16,12 @@ export default class ProfileController {
         }),
       firstName: vine.string().trim().minLength(3).maxLength(255).optional(),
       lastName: vine.string().trim().minLength(3).maxLength(255).optional(),
-      avatar: vine.file().optional(),
+      avatar: vine
+        .file({
+          size: '2mb',
+          extnames: ['jpg', 'jpeg', 'png'],
+        })
+        .optional(),
       phoneNumber: vine.string().minLength(10).maxLength(15).optional(),
     })
   )
@@ -40,25 +45,23 @@ export default class ProfileController {
 
     // Gestion de l'avatar (si fourni)
     if (avatar) {
-      const allowedMimeTypes = ['jpeg', 'png', 'jpg']
       const fileExtension = path.extname(avatar.clientName).toLowerCase().replace('.', '')
-
-      if (!allowedMimeTypes.includes(fileExtension)) {
-        return response.status(400).json({ message: 'Invalid file format' })
-      }
 
       const avatarFileName = `${user.id}-${lastName}.${fileExtension}`
       const avatarPath = `uploads/avatars`
 
-      // Déplacement de l'avatar vers le répertoire utilisateur
       await avatar.move(avatarPath, {
         name: avatarFileName,
         overwrite: true,
       })
 
-      // Vérification des erreurs lors du déplacement
       if (!avatar.isValid) {
         return response.status(400).json(avatar.errors)
+      }
+
+      // Supprimer l'ancien avatar si existant
+      if (user.profile!.avatar) {
+        // Suppression de l'ancien fichier ici
       }
 
       // Mise à jour du chemin de l'avatar dans le profil utilisateur

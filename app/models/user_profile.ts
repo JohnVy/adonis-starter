@@ -10,19 +10,19 @@ export default class UserProfile extends BaseModel {
   @column()
   declare userId: string
 
-  @column()
+  @column({ columnName: 'user_name' })
   declare userName: string
 
-  @column()
+  @column({ columnName: 'first_name' })
   declare firstName: string
 
-  @column()
+  @column({ columnName: 'last_name' })
   declare lastName: string
 
   @column()
   declare avatar: string | null
 
-  @column()
+  @column({ columnName: 'phone_number' })
   declare phoneNumber: string | null
 
   @belongsTo(() => User)
@@ -32,5 +32,5 @@ export default class UserProfile extends BaseModel {
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
-  declare updatedAt: DateTime
+  declare updatedAt: DateTime | null
 }
