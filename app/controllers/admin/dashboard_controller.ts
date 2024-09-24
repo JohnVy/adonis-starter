@@ -1,6 +1,6 @@
+import { HttpContext } from '@adonisjs/core/http'
 import { UserRole } from '#enums/user_role'
 import Customer from '#models/customer'
-import { HttpContext } from '@adonisjs/core/http'
 
 export default class DashboardController {
   async show({ auth, inertia, response }: HttpContext) {

@@ -1,4 +1,3 @@
-import { UserRole } from '#enums/user_role'
 import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { compose } from '@adonisjs/core/helpers'
 import hash from '@adonisjs/core/services/hash'
@@ -7,6 +6,7 @@ import type { HasOne } from '@adonisjs/lucid/types/relations'
 import { DateTime } from 'luxon'
 import Customer from './customer.js'
 import UserProfile from './user_profile.js'
+import { UserRole } from '#enums/user_role'
 
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['email'],

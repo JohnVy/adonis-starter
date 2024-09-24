@@ -1,5 +1,5 @@
-import UserProfile from '#models/user_profile'
 import { HttpContext } from '@adonisjs/core/http'
+import UserProfile from '#models/user_profile'
 
 export default class DashboardController {
   async show({ auth, inertia }: HttpContext) {

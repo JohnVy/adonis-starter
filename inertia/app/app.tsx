@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/triple-slash-reference */
 /// <reference path="../../adonisrc.ts" />
 /// <reference path="../../config/inertia.ts" />
 
-import { hydrateRoot } from 'react-dom/client'
-import { createInertiaApp } from '@inertiajs/react'
 import { resolvePageComponent } from '@adonisjs/inertia/helpers'
+import { createInertiaApp } from '@inertiajs/react'
+import { hydrateRoot } from 'react-dom/client'
 
 import '../assets/app.css'
 

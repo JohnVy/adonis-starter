@@ -1,0 +1,26 @@
+{
+  "extends": ["@adonisjs/eslint-config/app", "plugin:@typescript-eslint/recommended", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["import"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
+  }
+}

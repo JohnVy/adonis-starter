@@ -1,7 +1,7 @@
-import { UserRole } from '#enums/user_role'
-import User from '#models/user'
 import type { HttpContext } from '@adonisjs/core/http'
 import vine from '@vinejs/vine'
+import { UserRole } from '#enums/user_role'
+import User from '#models/user'
 
 export default class LoginController {
   static loginValidator = vine.compile(

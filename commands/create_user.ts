@@ -1,7 +1,7 @@
-import { UserRole } from '#enums/user_role'
-import User from '#models/user'
 import { BaseCommand, args } from '@adonisjs/core/ace'
 import type { CommandOptions } from '@adonisjs/core/types/ace'
+import { UserRole } from '#enums/user_role'
+import User from '#models/user'
 
 export default class CreateUser extends BaseCommand {
   static commandName = 'create:user'

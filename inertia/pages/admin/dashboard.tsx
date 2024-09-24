@@ -1,6 +1,6 @@
+import { CreditCard, Euro, TrendingUp, Users } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card'
 
-import { CreditCard, Euro, TrendingUp, Users } from 'lucide-react'
 import Layout from '~/layouts/layout'
 
 export default function DashboardPage() {

@@ -1,7 +1,7 @@
-import User from '#models/user'
-import UserProfile from '#models/user_profile'
 import type { HttpContext } from '@adonisjs/core/http'
 import vine from '@vinejs/vine'
+import User from '#models/user'
+import UserProfile from '#models/user_profile'
 
 export default class RegisterController {
   static registerValidator = vine.compile(

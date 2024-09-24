@@ -10,6 +10,7 @@
     "dev": "node ace serve --hmr",
     "test": "node ace test",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit"
   },
@@ -48,6 +49,7 @@
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.30.0",
     "hot-hook": "^0.2.6",
     "pino-pretty": "^11.2.1",
     "postcss": "^8.4.41",
@@ -102,9 +104,6 @@
       "./app/controllers/**/*.ts",
       "./app/middleware/*.ts"
     ]
-  },
-  "eslintConfig": {
-    "extends": "@adonisjs/eslint-config/app"
   },
   "prettier": "@adonisjs/prettier-config"
 }

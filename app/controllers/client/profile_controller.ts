@@ -1,6 +1,6 @@
+import path from 'node:path'
 import type { HttpContext } from '@adonisjs/core/http'
 import vine from '@vinejs/vine'
-import path from 'node:path'
 
 export default class ProfileController {
   static profileValidator = vine.compile(

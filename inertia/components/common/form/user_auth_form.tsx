@@ -1,6 +1,6 @@
+import { FormEvent, useState } from 'react'
 import { useForm } from '@inertiajs/react'
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
-import { FormEvent, useState } from 'react'
 import { Button } from '~/components/ui/button'
 import { Icons } from '~/components/ui/icons'
 import { Input } from '~/components/ui/input'
