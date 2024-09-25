@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react'
-import { UserLogForm } from '~/components/common/form/user_log_form'
+import { UserLogForm } from '~/components/content'
 
 import Layout from '~/layouts/layout'
 

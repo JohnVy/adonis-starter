@@ -10,7 +10,7 @@
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 
-// Global routes
+// Global routes -> These routes are available to all users (guests, authenticated, etc.) USE GET METHOD
 router.on('/').renderInertia('home')
 router.on('/about').renderInertia('about')
 router.on('/shop').renderInertia('shop')
@@ -42,7 +42,7 @@ const ClientOrdersController = () => import('#controllers/client/orders_controll
 router
   .group(() => {
     // View
-    router.get('/dashboard', [ClientDashboardController, 'render']).as('client.dashboard')
+    router.get('/dashboard', [ClientDashboardController, 'show']).as('client.dashboard')
     router.get('/orders', [ClientOrdersController, 'render']).as('client.orders')
     router.get('/profile', [ClientProfileController, 'render']).as('client.profile')
 
@@ -60,7 +60,7 @@ const AdminsSettingsController = () => import('#controllers/admin/settings_contr
 router
   .group(() => {
     // View
-    router.get('/admin/dashboard', [AdminDashboardController, 'render']).as('admin.dashboard')
+    router.get('/admin/dashboard', [AdminDashboardController, 'show']).as('admin.dashboard')
     router.get('/admin/customers', [AdminCustomersController, 'render']).as('admin.customers')
     router.get('/admin/orders', [AdminOrdersController, 'render']).as('admin.orders')
     router.get('/admin/products', [AdminProductsController, 'render']).as('admin.products')

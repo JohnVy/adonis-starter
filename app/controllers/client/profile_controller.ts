@@ -1,4 +1,3 @@
-import path from 'node:path'
 import type { HttpContext } from '@adonisjs/core/http'
 import vine from '@vinejs/vine'
 
@@ -45,7 +44,7 @@ export default class ProfileController {
 
     // Gestion de l'avatar (si fourni)
     if (avatar) {
-      const fileExtension = path.extname(avatar.clientName).toLowerCase().replace('.', '')
+      const fileExtension = avatar.extname?.toLowerCase()
 
       const avatarFileName = `${user.id}-${lastName}.${fileExtension}`
       const avatarPath = `uploads/avatars`

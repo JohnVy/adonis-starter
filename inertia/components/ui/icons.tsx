@@ -1,3 +1,5 @@
+import React from 'react'
+
 type IconProps = React.HTMLAttributes<SVGElement>
 
 export const Icons = {
@@ -143,6 +145,35 @@ export const Icons = {
       {...props}
     >
       <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
+  ),
+  // CREATE USE REF FOR THIS ICON
+  arrowRight: (props: IconProps, ref: React.Ref<SVGSVGElement>) => (
+    <svg
+      className="inline-block"
+      style={{ transform: 'translate(102%, -100%)' }}
+      width="12"
+      height="12"
+      viewBox="0 0 12 12"
+      fill="none"
+      ref={ref}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path
+        d="M10.875 1.125L1.125 10.875"
+        stroke="#212121"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5.625 1.125H10.875V6.375"
+        stroke="#212121"
+        strokeMiterlimit="10"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   ),
 }

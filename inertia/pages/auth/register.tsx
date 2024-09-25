@@ -1,7 +1,7 @@
 import { Link } from '@inertiajs/react'
+import { UserAuthForm } from '~/components/content'
 
-import { UserAuthForm } from '~/components/common/form/user_auth_form'
-import { buttonVariants } from '~/components/ui/button'
+import { buttonVariants } from '~/components/ui'
 
 import Layout from '~/layouts/layout'
 import { cn } from '~/lib/utils'

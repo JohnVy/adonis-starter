@@ -1,9 +1,11 @@
 import { PropsWithChildren } from 'react'
+import { Footer } from '~/components/layout/footer'
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
-    <div className="h-full min-h-screen w-full">
-      <div className="flex min-h-screen w-full flex-col">{children}</div>
+    <div className="relative flex min-h-screen flex-col bg-background">
+      <main className="flex-1">{children}</main>
+      <Footer />
     </div>
   )
 }

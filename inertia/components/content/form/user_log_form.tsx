@@ -1,10 +1,8 @@
 import { FormEvent, useState } from 'react'
 import { Link, useForm } from '@inertiajs/react'
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
-import { Button } from '~/components/ui/button'
-import { Icons } from '~/components/ui/icons'
-import { Input } from '~/components/ui/input'
-import { Label } from '~/components/ui/label'
+import { Button, Icons, Input, Label } from '~/components/ui'
+
 import { cn } from '~/lib/utils'
 
 interface UserLogFormProps extends React.HTMLAttributes<HTMLDivElement> {}
