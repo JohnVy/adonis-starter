@@ -13,9 +13,9 @@ export default class extends BaseSchema {
         .inTable('users')
         .onDelete('CASCADE')
         .index()
-      table.string('user_name', 20).notNullable().unique()
-      table.string('first_name', 100).notNullable()
-      table.string('last_name', 100).notNullable()
+      table.string('user_name', 20).nullable().unique()
+      table.string('first_name', 100).nullable()
+      table.string('last_name', 100).nullable()
       table.string('avatar').nullable()
       table.string('phone_number', 15).nullable()
 

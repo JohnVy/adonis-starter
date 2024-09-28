@@ -11,13 +11,13 @@ export default class UserProfile extends BaseModel {
   declare userId: string
 
   @column({ columnName: 'user_name' })
-  declare userName: string
+  declare userName: string | null
 
   @column({ columnName: 'first_name' })
-  declare firstName: string
+  declare firstName: string | null
 
   @column({ columnName: 'last_name' })
-  declare lastName: string
+  declare lastName: string | null
 
   @column()
   declare avatar: string | null
