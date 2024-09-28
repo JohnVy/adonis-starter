@@ -1,20 +1,20 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
   "style": "new-york",
-  "rsc": true,
+  "rsc": false,
   "tsx": true,
   "tailwind": {
     "config": "tailwind.config.js",
-    "css": "./inertia/assets/app.css",
-    "baseColor": "zinc",
-    "cssVariables": true,
+    "css": "inertia/assets/app.css",
+    "baseColor": "neutral",
+    "cssVariables": false,
     "prefix": ""
   },
   "aliases": {
-    "components": "./inertia/components",
-    "ui": "./inertia/components/ui",
-    "utils": "./inertia/lib/utils",
-    "lib": "./inertia/lib",
-    "hooks": "./inertia/hooks"
+    "components": "~/inertia/components",
+    "utils": "~/inertia/lib/utils",
+    "ui": "~/inertia/components/ui",
+    "lib": "~/inertia/lib",
+    "hooks": "~/inertia/hooks"
   }
 }
