@@ -1,24 +1,16 @@
-import { Link } from '@inertiajs/react'
-import { CircleUser, Menu, Search } from 'lucide-react'
-import {
-  Button,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-  Input,
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from '../ui'
+import { Link, usePage } from '@inertiajs/react'
+import { CircleUserRound, Menu, Search, ShoppingBag } from 'lucide-react'
+import DropdownMenuHeader from '../common/dropdown_menu_header'
+import { Button, Input, Sheet, SheetContent, SheetTrigger } from '../ui'
+import User from '#models/user'
 
 export function Header() {
+  const { user } = usePage<{ user: User }>().props
+
   return (
     <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
-      <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-        <Link href="/" className="flex items-center gap-2 text-lg font-semibold md:text-base">
+      <nav className="hidden flex-col gap-6 text-lg md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+        <Link href="/" className="flex items-center gap-2">
           Home
           <span className="sr-only">Acme Inc</span>
         </Link>
@@ -68,24 +60,20 @@ export function Header() {
             />
           </div>
         </form>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="secondary" size="icon" className="rounded-full">
-              <CircleUser className="h-5 w-5" />
-              <span className="sr-only">Toggle user menu</span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Settings</DropdownMenuItem>
-            <DropdownMenuItem>Support</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Link href="/logout">Logout</Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="flex gap-4">
+          <Link href="/login" className="rounded-full">
+            <ShoppingBag className="h-6 w-6 stroke-[1.2]" />
+            <span className="sr-only">Log In</span>
+          </Link>
+          {user ? (
+            <DropdownMenuHeader user={user} />
+          ) : (
+            <Link href="/login" className="rounded-full">
+              <CircleUserRound className="h-6 w-6 stroke-[1.2]" />
+              <span className="sr-only">Log In</span>
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   )
