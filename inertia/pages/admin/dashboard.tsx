@@ -1,12 +1,12 @@
 import { CreditCard, Euro, TrendingUp, Users } from 'lucide-react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui'
 
-import Layout from '~/layouts/layout'
+import LayoutAdmin from '~/layouts/admin/layout'
 
 export default function DashboardPage() {
   return (
-    <Layout>
-      <main className="flex flex-1 flex-col gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
+    <LayoutAdmin>
+      <main className="flex flex-1 flex-col gap-4 p-4 sm:px-8 sm:py-8 md:gap-8">
         <div className="grid w-full gap-2">
           <h1 className="text-3xl font-semibold">Dashboard</h1>
         </div>
@@ -68,6 +68,6 @@ export default function DashboardPage() {
           </Card>
         </div>
       </main>
-    </Layout>
+    </LayoutAdmin>
   )
 }

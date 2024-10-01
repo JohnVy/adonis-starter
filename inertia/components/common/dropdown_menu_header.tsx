@@ -1,6 +1,10 @@
 import { Link } from '@inertiajs/react'
-import { CircleUser } from 'lucide-react'
+
+import { CircleUserRound } from 'lucide-react'
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
   Button,
   DropdownMenu,
   DropdownMenuContent,
@@ -15,8 +19,13 @@ function DropdownMenuHeader({ user }: { user: User }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="secondary" size="icon" className="rounded-full">
-          <CircleUser className="h-5 w-5" />
+        <Button variant="ghost" size="icon" className="rounded-full">
+          <Avatar>
+            <AvatarImage src={user?.profile?.avatar ?? ''} alt="User avatar" />
+            <AvatarFallback>
+              <CircleUserRound className="h-5 w-5 stroke-[1.2]" />
+            </AvatarFallback>
+          </Avatar>
           <span className="sr-only">Toggle user menu</span>
         </Button>
       </DropdownMenuTrigger>

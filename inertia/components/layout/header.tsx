@@ -1,6 +1,7 @@
 import { Link, usePage } from '@inertiajs/react'
 import { CircleUserRound, Menu, Search, ShoppingBag } from 'lucide-react'
-import DropdownMenuHeader from '../common/dropdown_menu_header'
+
+import { DropdownMenuHeader } from '../common'
 import { Button, Input, Sheet, SheetContent, SheetTrigger } from '../ui'
 import User from '#models/user'
 
@@ -8,7 +9,7 @@ export function Header() {
   const { user } = usePage<{ user: User }>().props
 
   return (
-    <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+    <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-8">
       <nav className="hidden flex-col gap-6 text-lg md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <Link href="/" className="flex items-center gap-2">
           Home
@@ -60,16 +61,22 @@ export function Header() {
             />
           </div>
         </form>
-        <div className="flex gap-4">
-          <Link href="/login" className="rounded-full">
-            <ShoppingBag className="h-6 w-6 stroke-[1.2]" />
+        <div className="flex gap-2 items-center">
+          <Link
+            href="/login"
+            className="h-9 w-9 rounded-full hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+          >
+            <ShoppingBag className="h-5 w-5 stroke-[1.2]" />
             <span className="sr-only">Log In</span>
           </Link>
           {user ? (
             <DropdownMenuHeader user={user} />
           ) : (
-            <Link href="/login" className="rounded-full">
-              <CircleUserRound className="h-6 w-6 stroke-[1.2]" />
+            <Link
+              href="/login"
+              className="h-9 w-9 inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 rounded-full hover:bg-accent hover:text-accent-foreground"
+            >
+              <CircleUserRound className="h-5 w-5 stroke-[1.2]" />
               <span className="sr-only">Log In</span>
             </Link>
           )}
