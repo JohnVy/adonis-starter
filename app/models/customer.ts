@@ -7,10 +7,10 @@ export default class Customer extends BaseModel {
   @column({ isPrimary: true })
   declare id: string
 
-  @column()
-  declare userId: string
+  @column({ columnName: 'user_id' })
+  declare userId: string | null
 
-  @column()
+  @column({ columnName: 'stripe_customer_id' })
   declare stripeCustomerId: string
 
   @column.dateTime({ autoCreate: true })

@@ -17,13 +17,13 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column({ isPrimary: true })
   declare id: string
 
-  @column()
+  @column({ columnName: 'email' })
   declare email: string
 
   @column({ serializeAs: null })
   declare password: string
 
-  @column()
+  @column({ columnName: 'role' })
   declare role: UserRole
 
   @hasOne(() => UserProfile)

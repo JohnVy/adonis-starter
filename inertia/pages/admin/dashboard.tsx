@@ -1,9 +1,10 @@
 import { CreditCard, Euro, TrendingUp, Users } from 'lucide-react'
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui'
 
 import LayoutAdmin from '~/layouts/admin/layout'
 
-export default function DashboardPage() {
+export default function DashboardPage({ customerCountResult }: { customerCountResult: number }) {
   return (
     <LayoutAdmin>
       <main className="flex flex-1 flex-col gap-4 p-4 sm:px-8 sm:py-8 md:gap-8">
@@ -43,11 +44,11 @@ export default function DashboardPage() {
           </Card>
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 sm:pb-6">
-              <CardTitle className="text-lg">Active Now</CardTitle>
+              <CardTitle className="text-lg">Users</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">+573</div>
+              <div className="text-2xl font-bold">{customerCountResult}</div>
               <p className="text-xs text-muted-foreground">+201 since last hour</p>
             </CardContent>
           </Card>

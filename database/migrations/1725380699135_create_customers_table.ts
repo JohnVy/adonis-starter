@@ -16,7 +16,7 @@ export default class extends BaseSchema {
       table.string('stripe_customer_id', 255).notNullable().unique()
 
       table.timestamp('created_at', { useTz: true }).notNullable()
-      table.timestamp('updated_at', { useTz: true }).nullable()
+      table.timestamp('updated_at', { useTz: true }).nullable().defaultTo(this.now())
     })
   }
 
